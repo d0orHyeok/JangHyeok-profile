@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useRef } from 'react'
 import { FaChevronRight, FaChevronLeft } from 'react-icons/fa'
 import * as S from './Previews.styled'
 
@@ -14,40 +14,45 @@ const Previews = ({ items }: PreviewProps) => {
   const rightBtnRef = useRef<HTMLButtonElement>(null)
   const leftBtnRef = useRef<HTMLButtonElement>(null)
 
-  const handleClickMove =
-    (direction: 'left' | 'right') =>
-    (event: React.MouseEvent<HTMLButtonElement>) => {
-      event.preventDefault()
-      const container = containerRef.current as HTMLDivElement
-      const item = container.getElementsByClassName('preview-item')?.item(0)
-      if (!item) return
-      const { width } = item.getBoundingClientRect()
-      const move = direction === 'left' ? -width : width
-      const { scrollLeft, scrollWidth } = container
-      const etc = scrollLeft % move
-      const moveLeft =
-        etc === 0
-          ? scrollLeft + move
-          : direction === 'right'
-          ? scrollLeft - etc + 2 * move
-          : scrollLeft - etc + move
-      container.scrollTo({ behavior: 'smooth', left: moveLeft })
-      console.log(moveLeft, scrollWidth)
+  const moveSlide = useCallback((direction: 'left' | 'right') => {
+    const container = containerRef.current as HTMLDivElement
+    const item = container.getElementsByClassName('preview-item')?.item(0)
+    if (!item) return
+    const { width } = item.getBoundingClientRect()
+    const move = direction === 'left' ? -width : width
+    const { scrollLeft, scrollWidth } = container
+    const etc = scrollLeft % move
+    const moveLeft =
+      etc === 0
+        ? scrollLeft + move
+        : direction === 'right'
+        ? scrollLeft - etc + 2 * move
+        : scrollLeft - etc + move
+    container.scrollTo({ behavior: 'smooth', left: moveLeft })
 
-      const leftBtn = leftBtnRef.current as HTMLButtonElement
-      const rightBtn = rightBtnRef.current as HTMLButtonElement
+    const leftBtn = leftBtnRef.current as HTMLButtonElement
+    const rightBtn = rightBtnRef.current as HTMLButtonElement
 
-      if (moveLeft <= 0) {
-        leftBtn.style.display = 'none'
-        rightBtn.style.display = 'block'
-      } else if (moveLeft + width >= scrollWidth) {
-        leftBtn.style.display = 'block'
-        rightBtn.style.display = 'none'
-      } else {
-        leftBtn.style.display = 'block'
-        rightBtn.style.display = 'block'
-      }
+    if (moveLeft <= 0) {
+      leftBtn.style.display = 'none'
+      rightBtn.style.display = 'block'
+    } else if (moveLeft + width >= scrollWidth) {
+      leftBtn.style.display = 'block'
+      rightBtn.style.display = 'none'
+    } else {
+      leftBtn.style.display = 'block'
+      rightBtn.style.display = 'block'
     }
+  }, [])
+
+  const handleClickMove = useCallback(
+    (direction: 'left' | 'right') =>
+      (event: React.MouseEvent<HTMLButtonElement>) => {
+        event.preventDefault()
+        moveSlide(direction)
+      },
+    [moveSlide]
+  )
 
   useEffect(() => {
     const leftBtn = leftBtnRef.current as HTMLButtonElement
@@ -57,6 +62,20 @@ const Previews = ({ items }: PreviewProps) => {
       rightBtn.style.display = 'none'
     }
   }, [items])
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        moveSlide('left')
+      } else if (event.key === 'ArrowRight') {
+        moveSlide('right')
+      }
+    }
+    window.addEventListener('keydown', handleKeyDown)
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [moveSlide])
 
   return (
     <S.PreviewWrapper>

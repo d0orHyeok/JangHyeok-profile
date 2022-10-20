@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Header.styled'
-import ProfileImage from '@assets/images/profile.jpg'
+import ProfileImage from '../../assets/images/profile.jpg'
 import {
   FaGithub,
   FaInstagram,

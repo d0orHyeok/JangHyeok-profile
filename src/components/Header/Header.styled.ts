@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import HeaderBackground from '@assets/images/header_bg.jpg'
+import HeaderBackground from '../../assets/images/header_bg.jpg'
 
 const fadeIn = keyframes`
   0% {
