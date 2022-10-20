@@ -1,4 +1,4 @@
-import { wave, piic } from '@assets/data/comment'
+import { wave, piic } from '@components/Content/data/comment'
 import React, { useState } from 'react'
 import * as S from './Content.styled'
 import { ProjectLinks, ProjectStacks } from './sections/ProjectItem'
@@ -6,7 +6,7 @@ import Details from '@components/Details'
 import { MdImageSearch } from 'react-icons/md'
 import Modal from '@components/Modal'
 import Previews from '@components/Previews/Previews'
-import { preview_piic, preview_wave } from '@assets/data/preview'
+import { preview_piic, preview_wave } from '@components/Content/data/preview'
 
 type OpenModalType = 'wave' | 'piic' | undefined | null
 
