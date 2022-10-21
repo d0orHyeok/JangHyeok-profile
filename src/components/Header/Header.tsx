@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import * as S from './Header.styled'
-import ProfileImage from '../../assets/images/profile.jpg'
 import {
   FaGithub,
   FaInstagram,
@@ -29,7 +28,7 @@ const Header = () => {
       <S.HeaderContainer className="container" data-aos="fade-in">
         <div className="profile">
           <div className="profile-image">
-            <img src={ProfileImage} alt="profile" />
+            <img src="https://i.imgur.com/6UvDkMH.jpg" alt="profile" />
           </div>
           <div className="profile-desc">
             <div className="desc-name">

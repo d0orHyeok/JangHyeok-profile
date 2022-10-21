@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components'
-import HeaderBackground from '../../assets/images/header_bg.jpg'
 
 const fadeIn = keyframes`
   0% {
@@ -13,7 +12,7 @@ const fadeIn = keyframes`
 export const StyledHeader = styled.header`
   position: relative;
   min-height: 100vh;
-  background-image: url(${HeaderBackground});
+  background-image: url('https://i.imgur.com/WmlGtX3.jpg');
   background-size: cover;
   font-size: 1rem;
 
