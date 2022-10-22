@@ -48,6 +48,7 @@ export const MoveButton = styled.button`
   cursor: pointer;
   transition: ease 0.2s all;
 
+  &.press,
   &:hover {
     color: ${({ theme }) => theme.colors.primary};
   }

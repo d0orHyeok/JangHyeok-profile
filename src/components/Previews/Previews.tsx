@@ -64,16 +64,32 @@ const Previews = ({ items }: PreviewProps) => {
   }, [items])
 
   useEffect(() => {
+    const leftBtn = leftBtnRef.current as HTMLButtonElement
+    const rightBtn = rightBtnRef.current as HTMLButtonElement
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'ArrowLeft') {
         moveSlide('left')
+        leftBtn.classList.add('press')
       } else if (event.key === 'ArrowRight') {
         moveSlide('right')
+        rightBtn.classList.add('press')
       }
     }
+
+    const handleKeyUp = (event: KeyboardEvent) => {
+      if (event.key === 'ArrowLeft') {
+        leftBtn.classList.remove('press')
+      } else if (event.key === 'ArrowRight') {
+        rightBtn.classList.remove('press')
+      }
+    }
+
     window.addEventListener('keydown', handleKeyDown)
+    window.addEventListener('keyup', handleKeyUp)
     return () => {
       window.removeEventListener('keydown', handleKeyDown)
+      window.removeEventListener('keyup', handleKeyUp)
     }
   }, [moveSlide])
 
