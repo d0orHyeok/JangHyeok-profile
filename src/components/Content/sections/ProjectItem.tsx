@@ -5,10 +5,6 @@ import { BulletUl } from '../Content.styled'
 import { RiStackFill } from 'react-icons/ri'
 
 const ProjectItem = styled.div`
-  &:not(:last-child) {
-    margin-bottom: 1rem;
-  }
-
   display: flex;
   align-items: flex-start;
 

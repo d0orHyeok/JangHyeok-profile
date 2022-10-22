@@ -40,10 +40,16 @@ const Summary = styled.button`
 
 interface DeatilsProps extends React.HTMLAttributes<HTMLDivElement> {
   summary?: string
+  default?: boolean
 }
 
-const Details = ({ summary, children, ...props }: DeatilsProps) => {
-  const [open, setOpen] = useState(false)
+const Details = ({
+  summary,
+  default: defaultOpen,
+  children,
+  ...props
+}: DeatilsProps) => {
+  const [open, setOpen] = useState(Boolean(defaultOpen))
 
   return (
     <div {...props}>

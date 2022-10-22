@@ -33,12 +33,32 @@ const Content = () => {
           </h2>
           <p className="project-desc">{`음악공유 스트리밍 사이트, 개인프로젝트`}</p>
           <div className="project-contents">
-            <Details
-              summary="프로젝트 회고"
-              className="project-content-comment"
-            >
-              {wave}
-            </Details>
+            <div className="project-content-item">
+              <Details summary="구현 사항" default={true}>
+                <S.BulletUl>
+                  <li>
+                    {`각종 페이지 구현 (회원가입, 메인, 세팅, 차트, 프로필, 음악 & 플레이리스트 조회, 히스토리, 태그 조회, 검색, 음악 업로드)`}
+                  </li>
+                  <li>
+                    {`Redux, 자주 수정요청이 일어나는 유저 정보(업데이트, 좋아요, 팔로우 등)와 음악 스트리밍을 위한 음악플레이어 상태관리`}
+                  </li>
+                  <li>
+                    <S.Link
+                      href="https://github.com/d0orHyeok/Wave/blob/master/client/src/routes/router.tsx#L26-L62"
+                      target="_blank"
+                    >
+                      페이지 변경 시 이전페이지의 fetch 요청 abort 기능
+                    </S.Link>
+                  </li>
+                  <li>
+                    API 및 JWT를 사용한 사용자 인증, 이메일을 통한 일회성 인증
+                    구현
+                  </li>
+                  <li>Firebase storage를 통한 업로드 파일 관리</li>
+                </S.BulletUl>
+              </Details>
+              <Details summary="프로젝트 회고">{wave}</Details>
+            </div>
             <ProjectLinks
               className="project-content-item"
               github="https://github.com/d0orHyeok/Wave"
@@ -67,12 +87,37 @@ const Content = () => {
           </h2>
           <p className="project-desc">{`쇼핑몰 사이트, 개인프로젝트`}</p>
           <div className="project-contents">
-            <Details
-              summary="프로젝트 회고"
-              className="project-content-comment"
-            >
-              {piic}
-            </Details>
+            <div className="project-content-item">
+              <Details summary="구현 사항" default={true}>
+                <S.BulletUl>
+                  <li>
+                    {`각종 페이지 구현 (회원가입, 메인, 상품 검색 및 조회, 장바구니 & 위시리스트, 구매, 마이페이 지, 주문조회 및 상세조회)`}
+                  </li>
+                  <li>{`상품 추가, 수정, 제거가 가능한 관리자 페이지 구현`}</li>
+                  <li>
+                    {`Redux, 자주 수정요청이 일어나는 유저 정보 상태관리 (업데이트, 위시리스트, 장바구니 등)`}
+                  </li>
+                  <li>
+                    <S.Link
+                      href="https://github.com/d0orHyeok/next-shopping/blob/master/components/OrderPage/section/Payment.jsx"
+                      target="_blank"
+                    >
+                      부트페이를 사용한 결제요청
+                    </S.Link>
+                  </li>
+                  <li>
+                    API 및{' '}
+                    <S.Link
+                      href="https://github.com/d0orHyeok/next-shopping/blob/master/pages/api/payment/validation.ts"
+                      target="_blank"
+                    >
+                      부트페이 결제 검증 구현
+                    </S.Link>
+                  </li>
+                </S.BulletUl>
+              </Details>
+              <Details summary="프로젝트 회고">{piic}</Details>
+            </div>
             <ProjectLinks
               className="project-content-item"
               github="https://github.com/d0orHyeok/next-shopping"

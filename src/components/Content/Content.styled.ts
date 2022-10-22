@@ -46,7 +46,7 @@ export const BulletUl = styled.ul`
 
   & li {
     text-indent: -1rem;
-    margin-left: 1rem;
+    margin-left: 1.5rem;
 
     & > * {
       text-indent: 0;
@@ -88,8 +88,10 @@ export const Projects = styled(Section)`
       margin-bottom: 1rem;
     }
 
-    & .project-content-comment {
-      margin-bottom: 1rem;
+    & .project-content-item {
+      &:not(:last-child) {
+        margin-bottom: 1rem;
+      }
     }
   }
 `
@@ -115,5 +117,14 @@ export const PreviewButton = styled.button`
 
   &:active {
     background-color: rgba(57, 99, 157, 0.3);
+  }
+`
+
+export const Link = styled.a`
+  color: gray;
+  transition: ease opacity 0.1s;
+
+  &:hover {
+    opacity: 0.6;
   }
 `

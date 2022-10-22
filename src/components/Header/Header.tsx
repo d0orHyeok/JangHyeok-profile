@@ -8,8 +8,8 @@ import {
 } from 'react-icons/fa'
 import { AiOutlineMail } from 'react-icons/ai'
 
-const introduceText = `반복을 줄이고 응집도를 높여나가는 개발을 좋아합니다.
-개발자와 사용자에게 최적의 경험을 전달해주는 것을 지향합니다.`
+const introduceText = `가독성있는 코드를 작성하고 반복을 줄이는 개발을 좋아합니다.
+사용자와 개발자에게 최적의 경험을 전달해주는 것을 지향합니다.`
 
 const Header = () => {
   const [eng, setEng] = useState(false)
